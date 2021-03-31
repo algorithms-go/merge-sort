@@ -29,12 +29,16 @@ func merge(L, R []int) []int {
 }
 
 // sort sorts the given slice by using the Merge Sort algorithm
-func MergeSort(A []int) []int {
+func sort(A []int) []int {
 	if len(A) > 1 {
 		m := len(A) / 2
 		L := A[:m]
 		R := A[m:]
-		A = merge(MergeSort(R), MergeSort(L))
+		A = merge(sort(R), sort(L))
 	}
 	return A
+}
+
+func MergeSort(A []int) []int {
+	return sort(A)
 }
