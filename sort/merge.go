@@ -45,6 +45,11 @@ func merge(L, R []int, fn sortFunc) []int {
 // 4. after that it starts merging & sorting all the slices back
 // 5. at the end we have 1 single slice sorted out
 func sort(A []int, fn sortFunc) []int {
+	if fn == nil {
+		fn = func(a, b int) bool {
+			return a < b
+		}
+	}
 	if len(A) > 1 {
 		m := len(A) / 2
 		L := A[:m]
@@ -54,7 +59,15 @@ func sort(A []int, fn sortFunc) []int {
 	return A
 }
 
+// hybridSort uses a combination of insertion & merge sorting algorithms to sort a given slice
+// it uses the insertion sorting for small data sets
+// and it uses merge sort till the data set becomes small enough to use insertion sorting
 func hybridSort(A []int, fn sortFunc) []int {
+	if fn == nil {
+		fn = func(a, b int) bool {
+			return a < b
+		}
+	}
 	if len(A) > 1 {
 		if len(A) <= insertionSortMaxThreshold {
 			return insertionSortFunc(A, fn)
@@ -70,10 +83,7 @@ func hybridSort(A []int, fn sortFunc) []int {
 
 // MergeSort sorts a given slice by using the merge sorting algorithm
 func MergeSort(A []int) []int {
-	fn := func(a, b int) bool {
-		return a < b
-	}
-	return sort(A, fn)
+	return sort(A, nil)
 }
 
 // MergeSort sorts a given slice by using the merge sorting algorithm and a sorting function

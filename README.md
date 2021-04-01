@@ -1,5 +1,12 @@
-# merge-sort
-Merge Sort Algorithm in Go
+# Merge Sort Algorithm
+
+### Overview
+
+### The Algorithm
+
+### Pseudocode
+
+### Facts
 
 ### Resources
 

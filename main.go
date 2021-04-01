@@ -23,6 +23,4 @@ func main() {
 	fmt.Println(sort.InsertionMergeSortFunc(B, func(a, b int) bool {
 		return a < b
 	}))
-	// explain merge in diagrams & animations
-	// explain recursive call in diagrams & animations
 }
