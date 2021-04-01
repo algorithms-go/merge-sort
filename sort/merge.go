@@ -6,7 +6,7 @@ type sortFunc func(a, b int) bool
 
 // merge merges 2 slices into a single slice, also sorting the resulting slice
 func merge(L, R []int, fn sortFunc) []int {
-	A := make([]int, len(L)*2)
+	A := make([]int, len(L)+len(R))
 	i, j, k := 0, 0, 0
 	for i < len(L) && j < len(R) {
 		if fn(L[i], R[j]) {
@@ -56,12 +56,13 @@ func sort(A []int, fn sortFunc) []int {
 
 func hybridSort(A []int, fn sortFunc) []int {
 	if len(A) > 1 {
-		m := len(A) / 2
-		if m <= insertionSortMaxThreshold {
+		if len(A) <= insertionSortMaxThreshold {
 			return insertionSortFunc(A, fn)
 		}
+		m := len(A) / 2
 		L := A[:m]
 		R := A[m:]
+
 		A = merge(hybridSort(R, fn), hybridSort(L, fn), fn)
 	}
 	return A
@@ -82,6 +83,7 @@ func MergeSortFunc(A []int, fn sortFunc) []int {
 
 // InsertionMergeSortFunc sorts a given slice by using a hybrid algorithm
 // insertion & merge sorting algorithm and a sorting function
+// also known as Ford–Johnson algorithm
 func InsertionMergeSortFunc(A []int, fn sortFunc) []int {
 	return hybridSort(A, fn)
 }
