@@ -1,6 +1,8 @@
 package sort
 
-const insertionSortMaxThreshold = 20
+// Note: the more elements you are sorting the lower this number should be
+// the sweet spot is between: 8-20
+const insertionSortMaxThreshold = 10
 
 type sortFunc func(a, b int) bool
 
@@ -70,7 +72,7 @@ func hybridSort(A []int, fn sortFunc) []int {
 	}
 	if len(A) > 1 {
 		if len(A) <= insertionSortMaxThreshold {
-			return insertionSortFunc(A, fn)
+			return InsertionSortFunc(A, fn)
 		}
 		m := len(A) / 2
 		L := A[:m]

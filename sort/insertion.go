@@ -1,7 +1,7 @@
 package sort
 
-// insertionSortFunc uses the insertion sort algorithm and a sorting function
-func insertionSortFunc(A []int, fn sortFunc) []int {
+// InsertionSortFunc uses the insertion sort algorithm and a sorting function
+func InsertionSortFunc(A []int, fn sortFunc) []int {
 	for j := 1; j < len(A); j++ {
 		key := A[j]
 		i := j - 1

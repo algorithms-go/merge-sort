@@ -1,6 +1,7 @@
 package sort
 
 import (
+	"math/rand"
 	"testing"
 
 	"github.com/stretchr/testify/suite"
@@ -131,4 +132,43 @@ func (s mergeSortSuite) Test_InsertionMergeSortFunc() {
 
 func TestMergeSort(t *testing.T) {
 	suite.Run(t, new(mergeSortSuite))
+}
+
+func BenchmarkMergeSort(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		MergeSort(generateIntegers(10_000))
+	}
+}
+
+func BenchmarkMergeSortFunc(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		MergeSortFunc(generateIntegers(10_000), func(a, b int) bool {
+			return a < b
+		})
+	}
+}
+
+func BenchmarkInsertionMergeSortFunc(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		InsertionMergeSortFunc(generateIntegers(10_000), func(a, b int) bool {
+			return a < b
+		})
+	}
+}
+
+// DISCLAIMER: This takes a long time. Have patience before you run it
+func BenchmarkInsertionSort(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		InsertionSortFunc(generateIntegers(10_000), func(a, b int) bool {
+			return a < b
+		})
+	}
+}
+
+func generateIntegers(n int) []int {
+	var A []int
+	for i := 0; i < n; i++ {
+		A = append(A, rand.Intn(n))
+	}
+	return A
 }

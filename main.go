@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math/rand"
+	"time"
 
 	"github.com/algorithms-go/sorting/sort"
 )
@@ -16,11 +17,30 @@ func main() {
 	fmt.Println(sort.InsertionMergeSortFunc(A, func(a, b int) bool {
 		return a > b
 	}))
-	var B []int
-	for i := 0; i < 55; i++ {
-		B = append(B, rand.Intn(55))
+
+	benchmark(100_000)
+}
+
+func benchmark(n int) {
+	var int100k []int
+	for i := 0; i < n; i++ {
+		int100k = append(int100k, rand.Intn(n))
 	}
-	fmt.Println(sort.InsertionMergeSortFunc(B, func(a, b int) bool {
+	start := time.Now()
+	sort.InsertionSortFunc(int100k, func(a, b int) bool {
 		return a < b
-	}))
+	})
+	fmt.Println("elapsed", time.Now().Sub(start))
+
+	start = time.Now()
+	sort.MergeSortFunc(int100k, func(a, b int) bool {
+		return a < b
+	})
+	fmt.Println("elapsed", time.Now().Sub(start))
+
+	start = time.Now()
+	sort.InsertionMergeSortFunc(int100k, func(a, b int) bool {
+		return a < b
+	})
+	fmt.Println("elapsed", time.Now().Sub(start))
 }
