@@ -22,24 +22,24 @@ func main() {
 }
 
 func benchmark(n int) {
-	var int100k []int
+	var A []int
 	for i := 0; i < n; i++ {
-		int100k = append(int100k, rand.Intn(n))
+		A = append(A, rand.Intn(n))
 	}
 	start := time.Now()
-	sort.InsertionSortFunc(int100k, func(a, b int) bool {
+	sort.InsertionSortFunc(A, func(a, b int) bool {
 		return a < b
 	})
 	fmt.Println("elapsed", time.Now().Sub(start))
 
 	start = time.Now()
-	sort.MergeSortFunc(int100k, func(a, b int) bool {
+	sort.MergeSortFunc(A, func(a, b int) bool {
 		return a < b
 	})
 	fmt.Println("elapsed", time.Now().Sub(start))
 
 	start = time.Now()
-	sort.InsertionMergeSortFunc(int100k, func(a, b int) bool {
+	sort.InsertionMergeSortFunc(A, func(a, b int) bool {
 		return a < b
 	})
 	fmt.Println("elapsed", time.Now().Sub(start))
