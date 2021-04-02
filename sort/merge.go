@@ -10,6 +10,7 @@ type sortFunc func(a, b int) bool
 func merge(L, R []int, fn sortFunc) []int {
 	A := make([]int, len(L)+len(R))
 	i, j, k := 0, 0, 0
+	// compare left & right side elements before merging
 	for i < len(L) && j < len(R) {
 		if fn(L[i], R[j]) {
 			A[k] = L[i]
@@ -21,8 +22,8 @@ func merge(L, R []int, fn sortFunc) []int {
 		k++
 	}
 
-	// check if any elements from the LEFT/RIGHT side were missed
-	// in the comparison section above
+	// check if any elements from the left/right side
+	// were missed in the comparison section above
 	for i < len(L) {
 		A[k] = L[i]
 		i++
@@ -56,6 +57,10 @@ func sort(A []int, fn sortFunc) []int {
 		m := len(A) / 2
 		L := A[:m]
 		R := A[m:]
+		// sort the right side
+		// sort the left side
+		// merge the sorted sides
+		// do this recursively till the slice has 1 element only
 		A = merge(sort(R, fn), sort(L, fn), fn)
 	}
 	return A
@@ -78,6 +83,11 @@ func hybridSort(A []int, fn sortFunc) []int {
 		L := A[:m]
 		R := A[m:]
 
+		// sort the right side
+		// sort the left side
+		// merge the sorted sides
+		// do this recursively till the slice has a minimum of elements (i.e. 10)
+		//to apply the insertion sorting algorithm
 		A = merge(hybridSort(R, fn), hybridSort(L, fn), fn)
 	}
 	return A
