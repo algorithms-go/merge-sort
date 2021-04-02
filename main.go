@@ -30,17 +30,17 @@ func benchmark(n int) {
 	sort.InsertionSortFunc(A, func(a, b int) bool {
 		return a < b
 	})
-	fmt.Println("elapsed", time.Now().Sub(start))
+	fmt.Println("elapsed for insertion sort:", time.Now().Sub(start))
 
 	start = time.Now()
 	sort.MergeSortFunc(A, func(a, b int) bool {
 		return a < b
 	})
-	fmt.Println("elapsed", time.Now().Sub(start))
+	fmt.Println("elapsed for merge sort:", time.Now().Sub(start))
 
 	start = time.Now()
 	sort.InsertionMergeSortFunc(A, func(a, b int) bool {
 		return a < b
 	})
-	fmt.Println("elapsed", time.Now().Sub(start))
+	fmt.Println("elapsed for insertion merge sort:", time.Now().Sub(start))
 }
