@@ -1,5 +1,22 @@
 # Merge Sort Algorithm
 
+The merge sort algorithm may seem complicated to implement because it uses a recursive approach,
+which bugs a lot of people. The easiest way to reason about the merge sort algorithm is:
+Imagine you have a big pile of cards that you want to sort out.
+
+The principle is simple, divide the pile of cards in 2 pieces (left & right) till
+new smaller piles consist of one card only. Then start merging the left & right piles
+till you reach the top of the pile.
+
+When merging 2 piles of cards compare each card with the other card in the pile and
+merge them in the correct (sorted) order.
+
+At the end of this recursive process we shall have the huge pile of cards sorted out.
+
+To make what was described even clearer check out the following example with cards:
+
+<img alt="from js to go image" src="https://github.com/algorithms-go/merge-sort/blob/master/merge-sort-cards-intro.gif?raw=true" width="700"/> 
+
 ### Overview
 
 ### The Algorithm
