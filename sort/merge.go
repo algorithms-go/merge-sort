@@ -57,6 +57,18 @@ func sort(A []int, fn sortFunc) []int {
 		m := len(A) / 2
 		L := A[:m]
 		R := A[m:]
+
+		// The long version for languages that do not support clever constructs
+		//n1 := len(A) / 2
+		//n2 := len(A) - n1
+		//L, R := make([]int, n1), make([]int, n2)
+		//for i := 0; i < n1; i++ {
+		//	L[i] = A[i]
+		//}
+		//for j := 0; j < n2; j++ {
+		//	R[j] = A[n1+j]
+		//}
+
 		// sort the right side
 		// sort the left side
 		// merge the sorted sides
