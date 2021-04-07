@@ -15,7 +15,7 @@ At the end of this recursive process we shall have the huge pile of cards sorted
 
 To make what was described even clearer check out the following example with cards:
 
-<img alt="from js to go image" src="https://github.com/algorithms-go/merge-sort/blob/master/merge-sort-cards-intro.gif?raw=true" width="700"/> 
+<img alt="from js to go image" src="https://github.com/algorithms-go/merge-sort/blob/master/gifs/merge-sort-cards-intro.gif?raw=true" width="700"/> 
 
 ### Overview
 
