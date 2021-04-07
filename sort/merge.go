@@ -7,6 +7,7 @@ const insertionSortMaxThreshold = 10
 type sortFunc func(a, b int) bool
 
 // merge merges 2 slices into a single slice, also sorting the resulting slice
+// Note: to ensure the merge function works correctly the L and R must be sorted
 func merge(L, R []int, fn sortFunc) []int {
 	A := make([]int, len(L)+len(R))
 	i, j, k := 0, 0, 0
