@@ -79,10 +79,10 @@ func sort(A []int, fn sortFunc) []int {
 	return A
 }
 
-// hybridSort uses a combination of insertion & merge sorting algorithms to sort a given slice
+// insertionMergeSort uses a combination of insertion & merge sorting algorithms to sort a given slice
 // it uses the insertion sorting for small data sets
 // and it uses merge sort till the data set becomes small enough to use insertion sorting
-func hybridSort(A []int, fn sortFunc) []int {
+func insertionMergeSort(A []int, fn sortFunc) []int {
 	if fn == nil {
 		fn = func(a, b int) bool {
 			return a < b
@@ -101,7 +101,7 @@ func hybridSort(A []int, fn sortFunc) []int {
 		// merge the sorted sides
 		// do this recursively till the slice has a minimum of elements (i.e. 10)
 		//to apply the insertion sorting algorithm
-		A = merge(hybridSort(R, fn), hybridSort(L, fn), fn)
+		A = merge(insertionMergeSort(R, fn), insertionMergeSort(L, fn), fn)
 	}
 	return A
 }
@@ -120,5 +120,5 @@ func MergeSortFunc(A []int, fn sortFunc) []int {
 // insertion & merge sorting algorithm and a sorting function
 // also known as Ford–Johnson algorithm
 func InsertionMergeSortFunc(A []int, fn sortFunc) []int {
-	return hybridSort(A, fn)
+	return insertionMergeSort(A, fn)
 }
