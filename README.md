@@ -1,6 +1,6 @@
 # Merge Sort Algorithm
 
-<img alt="from js to go image" src="https://github.com/algorithms-go/merge-sort/blob/master/thumbnail.jpg?raw=true" width="800"/>
+<img alt="thumbnail image" src="https://github.com/algorithms-go/merge-sort/blob/master/thumbnail.jpg?raw=true" width="800"/>
 
 The merge sort algorithm may seem complicated to implement because it uses a recursive approach,
 which bugs a lot of people. The easiest way to reason about the merge sort algorithm is:
@@ -21,9 +21,25 @@ To make what was described even clearer check out the following example with car
 
 ### Overview
 
+<img alt="algorithm overview image" src="https://github.com/algorithms-go/merge-sort/blob/master/gifs/algorithm-overview.gif?raw=true" width="800"/>
+
+### Divide & Conquer principle
+
+<img alt="divide and conquer image" src="https://github.com/algorithms-go/merge-sort/blob/master/gifs/divide-and-conquer.gif?raw=true" width="800"/>
+
 ### The Algorithm
 
-### Pseudocode
+### `merge` function
+
+<img alt="merge function image" src="https://github.com/algorithms-go/merge-sort/blob/master/gifs/merge-function.gif?raw=true" width="800"/>
+
+### `merge` function pseudocode
+
+### `sort` function
+
+<img alt="sort function image" src="https://github.com/algorithms-go/merge-sort/blob/master/gifs/sort-function.gif?raw=true" width="800"/>
+
+### `sort` function pseudocode
 
 ### Facts
 
@@ -91,7 +107,7 @@ BenchmarkInsertionMergeSortFunc-16    	     915	   1293846 ns/op
 
 - [Merge Sort - Geeks for Geeks](https://www.geeksforgeeks.org/merge-sort/)
 - [Merge Sort - Programiz](https://www.programiz.com/dsa/merge-sort)
+- [Big O Cheatsheet - Insertion vs Merge vs Quick sort](https://www.bigocheatsheet.com/)
 - [Merge Sort - Wiki](https://en.wikipedia.org/wiki/Merge_sort)
 - [Insertion Merge Sort - Ford–Johnson algorithm - Wiki](https://en.wikipedia.org/wiki/Merge-insertion_sort)
-- [Big O Cheatsheet - Insertion vs Merge vs Quick sort](https://www.bigocheatsheet.com/)
-- [Divide & Conquer Principle](https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm)
+- [Divide & Conquer Principle - Wiki](https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm)
