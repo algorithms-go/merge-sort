@@ -125,29 +125,40 @@ give us an idea of how we shall proceed with sorting and what kind of sorting al
 ### How to Test
 
 ```bash
+# cd into the package
+cd sort
+
 # run benchmark tests for BenchmarkInsertionMergeSortFunc
+# feel free to change the above benchmark name with your own
 go test -v -bench 'BenchmarkInsertionMergeSortFunc'
 ```
 
 ### Benchmarks
 
 The current benchmarks ran on a relatively small
-data set of 100 000 randomly generated integers.
-In real life, data sets can be bigger, and the distribution
-of the data can be worse in terms of how sorted it is.
+data set of **100 000** randomly generated integers.
+In real life, data sets can be *bigger*, and the *distribution*
+of the data can be **worse** in terms of how sorted it is.
 
-Thus, as you can see the merge sorting algorithm, as well as the
-hybrid algorithm using the insertion sorting algorithm,
+Thus, as you can see the ***Merge Sort Algorithm***, as well as the
+hybrid algorithm using the ***Insertion Sort Algorithm***,
 and the merge algorithm perform way better, and they are
-pretty stable algorithms, which makes the result very predictable.
+pretty ***stable algorithms***, which makes the result ***very predictable***.
 
 The results may vary, due to the randomly generated numbers,
 as well as depending on the specific environment and machine
 they are run on.
 
+These are the results I got on my personal Macbook Pro 2019 machine,
+yours might be different:
+
 Bottom line, the indicating factor that one algorithm performs
 the best is how many time it can be run in a time window
 & how many ns/op it takes.
+
+Pay attention at the **1st number** which is how many times the function was executed
+in a small time window (*bigger is better*), also at the **2nd number** which
+shows how many nanoseconds/operation it took (*smaller is better*).
 
 ```text
 goos: darwin
