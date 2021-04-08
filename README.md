@@ -19,21 +19,21 @@ To make what was described even clearer check out the following example with car
 
 <img alt="from js to go image" src="https://github.com/algorithms-go/merge-sort/blob/master/gifs/merge-sort-cards-intro.gif?raw=true" width="800"/> 
 
-### Overview
+## Overview
 
 <img alt="algorithm overview image" src="https://github.com/algorithms-go/merge-sort/blob/master/gifs/algorithm-overview.gif?raw=true" width="800"/>
 
-### Divide & Conquer principle
+## Divide & Conquer principle
 
 <img alt="divide and conquer image" src="https://github.com/algorithms-go/merge-sort/blob/master/gifs/divide-and-conquer.gif?raw=true" width="800"/>
 
-### The Algorithm
+## The Algorithm
 
-### `merge` function
+## `merge` function
 
 <img alt="merge function image" src="https://github.com/algorithms-go/merge-sort/blob/master/gifs/merge-function.gif?raw=true" width="800"/>
 
-### `merge` function pseudocode
+## `merge` function pseudocode
 
 ```
 function merge(L, R) {
@@ -115,11 +115,11 @@ return A
 For the Go implementation check out the [merge function](sort/merge.go#L11)
 
 
-### `sort` function
+## `sort` function
 
 <img alt="sort function image" src="https://github.com/algorithms-go/merge-sort/blob/master/gifs/sort-function.gif?raw=true" width="800"/>
 
-### `sort` function pseudocode
+## `sort` function pseudocode
 
 ```
 function sort(A) {
@@ -193,7 +193,7 @@ A = merge(sort(L), sort(R))
 For the Go implementation check out the [sort function](sort/merge.go#L51)
 and [insertionMergeSort function](sort/merge.go#L51)
 
-### Facts
+## Facts
 
 As I say in everyone of my tutorials, there is really ***no perfect tool/solution*** or algorithm that does it all.
 You really have to use the right tool for the right problem, or I should say use the right
@@ -214,7 +214,7 @@ Here are couple of facts about the Insertion Sort Algorithm:
 Knowing the above facts, helps ***identify & diagnose*** the sorting problem and
 give us an idea of how we shall proceed with sorting and what kind of sorting algorithms to use.
 
-### How to Test
+## How to Test
 
 ```bash
 # cd into the package
@@ -225,7 +225,7 @@ cd sort
 go test -v -bench 'BenchmarkInsertionMergeSortFunc'
 ```
 
-### Benchmarks
+## Benchmarks
 
 The current benchmarks ran on a relatively small
 data set of **100 000** randomly generated integers.
@@ -285,7 +285,7 @@ BenchmarkInsertionMergeSortFunc
 BenchmarkInsertionMergeSortFunc-16    	     915	   1293846 ns/op
 ```
 
-### Resources
+## Resources
 
 - [Merge Sort Algorithm - Medium Article](https://steevehook.medium.com/merge-sorting-algorithm-in-go-f7d5b47e015b)
 - [Merge Sort - Geeks for Geeks](https://www.geeksforgeeks.org/merge-sort/)
