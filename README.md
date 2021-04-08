@@ -67,6 +67,54 @@ function merge(L, R) {
 }
 ```
 
+As you can see from the pseudocode above we’re mainly doing 2 things:
+
+1. **Compare** the elements and decide which ones goes first in the resulting **A** array/slice.
+
+```
+...
+while i < L.length and j < R.length {
+  if L[i] < R[j] {
+    A[k] = L[i]
+    i++
+  } else {
+    A[k] = R[j]
+    j++
+  }
+}
+...
+```
+
+Also, notice the **sorting condition** above is hardcoded.
+Instead, we could also receive a **callback function** that accepts `a` and `b`
+and returns `bool`, giving the control of **sorting** to the caller.
+
+Something like the following:
+
+```type sortFunc func(a, b int) bool```
+
+2. At the end we check for any left elements and we add them at the end of
+the resulting array/slice A
+
+```
+...
+while i < L.length {
+  A[k] = L[i]
+  i++
+  k++
+}
+while j < R.length {
+  A[k] = R[j]
+  j++
+  k++
+}
+return A
+...
+```
+
+For the Go implementation check out the [merge function](sort/merge.go#L11)
+
+
 ### `sort` function
 
 <img alt="sort function image" src="https://github.com/algorithms-go/merge-sort/blob/master/gifs/sort-function.gif?raw=true" width="800"/>
