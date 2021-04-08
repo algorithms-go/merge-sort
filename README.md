@@ -35,11 +35,71 @@ To make what was described even clearer check out the following example with car
 
 ### `merge` function pseudocode
 
+```
+function merge(L, R) {
+  let A[0..L.length+R.length]
+  i, j, k = 0, 0, 0
+  // compare LEFT & RIGHT side elements before merging
+  while i < L.length and j < R.length {
+    if L[i] < R[j] {
+      A[k] = L[i]
+      i++
+    } else {
+      A[k] = R[j]
+      j++
+    }
+  }
+  
+  // check if any elements from the left/right side
+  // were missed in the comparison section above
+  while i < L.length {
+    A[k] = L[i]
+    i++
+    k++
+  }
+  while j < R.length {
+    A[k] = R[j]
+    j++
+    k++
+  }
+  
+  return A
+}
+```
+
 ### `sort` function
 
 <img alt="sort function image" src="https://github.com/algorithms-go/merge-sort/blob/master/gifs/sort-function.gif?raw=true" width="800"/>
 
 ### `sort` function pseudocode
+
+```
+function sort(A) {
+  if A.length > 1 {
+    n1 = A.length / 2
+    n2 = A.length - n1
+    let L[0..n1] and R[0..n2]
+    
+    // split A in half => L and R arrays/slices
+    for i=0 to n1 {
+      L[i] = A[i]
+    }
+    for j=0 to n2 {
+      R[j] = A[n1+j]
+    }
+    // for languages that use clever constructs
+    // m = A.length / 2
+    // L = A[:m]
+    // R = A[m:]
+    // recursively sort & merge L & R arrays/slices
+    // A starts growing when recursion reaches the very bottom
+    A = merge(sort(L), sort(R))
+  }
+  
+  // return when array/slice consists of 1 element
+  return A
+}
+```
 
 ### Facts
 
