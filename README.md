@@ -103,6 +103,25 @@ function sort(A) {
 
 ### Facts
 
+As I say in everyone of my tutorials, there is really ***no perfect tool/solution*** or algorithm that does it all.
+You really have to use the right tool for the right problem, or I should say use the right
+Sorting Algorithm for the right situation. That’s why before we wrap this up, let’s explore
+couple of ***facts*** about the ***Merge Sort Algorithm***, so that you know when is best to use it and when not:
+
+- Merge Sort is ***Efficient*** & ***Very Fast*** for ***big data*** sets
+- Merge Sort Time Complexity is: `O(n*log(n))`
+- Merge Sort Space Complexity is: `O(n)`
+
+Here are couple of facts about the Insertion Sort Algorithm:
+
+- Insertion Sort is ***Efficient*** for ***small data*** sets
+- Insertion Sort ***Best*** Time Complexity is: `O(n)`
+- Insertion Sort ***Worst/Average*** Time Complexity is: `O(n*n)`
+- Insertion Sort Space Complexity is: `O(1)`
+
+Knowing the above facts, helps ***identify & diagnose*** the sorting problem and
+give us an idea of how we shall proceed with sorting and what kind of sorting algorithms to use.
+
 ### How to Test
 
 ```bash
