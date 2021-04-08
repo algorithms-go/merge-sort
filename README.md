@@ -2,16 +2,16 @@
 
 <img alt="thumbnail image" src="https://github.com/algorithms-go/merge-sort/blob/master/thumbnail.jpg?raw=true" width="800"/>
 
-The merge sort algorithm may seem complicated to implement because it uses a recursive approach,
+The ***Merge Sort Algorithm*** may seem complicated to implement because it uses a *recursive approach*,
 which bugs a lot of people. The easiest way to reason about the merge sort algorithm is:
-Imagine you have a big pile of cards that you want to sort out.
+Imagine you have a *big pile of cards* that you want to sort out.
 
-The principle is simple, divide the pile of cards in 2 pieces (left & right) till
-new smaller piles consist of one card only. Then start merging the left & right piles
+The principle is simple, **divide** the pile of cards in **2 pieces** (left & right) till
+**new smaller piles** consist of 1 card only. Then **start merging** the left & right piles
 till you reach the top of the pile.
 
 When merging 2 piles of cards compare each card with the other card in the pile and
-merge them in the correct (sorted) order.
+merge them in the **correct (sorted)** order.
 
 At the end of this recursive process we shall have the huge pile of cards sorted out.
 
@@ -21,15 +21,81 @@ To make what was described even clearer check out the following example with car
 
 ## Overview
 
+Now that we know what is the ***Merge Sort Algorithm*** in a nutshell,
+let us define couple of rules and technical steps required for this algorithm to work.
+
+- On every call find the **middle** of the incoming array/slice (divide it in 2)
+- **Sort** the **LEFT** side (*recursively*)
+- **Sort** the **RIGHT** side (*recursively*)
+- **Merge** the **LEFT** & **RIGHT** side (*recursively*)
+- Array/Slice of **1 element** is considered **sorted**
+- **Repeat** the process using the **Divide & Conquer** principle (*Recursive*)
+
+Here’s a small example of how the process pretty much looks:
+
 <img alt="algorithm overview image" src="https://github.com/algorithms-go/merge-sort/blob/master/gifs/algorithm-overview.gif?raw=true" width="800"/>
 
 ## Divide & Conquer principle
+
+While every problem out there can be solved using the good old procedural approach,
+in many cases using a **Divide & Conquer** or *recursive* approach is just
+much easier and simpler in order to solve a problem.
+
+The Divide & Conquer principle consists of 3 simple steps:
+
+1. **Divide** the problem into **smaller problems** of the same type
+2. **Repeat** the process till the problem can **no longer** be **divided**
+3. **Collect & Merge** indivisible problems (**solutions**) or *Conquer*
 
 <img alt="divide and conquer image" src="https://github.com/algorithms-go/merge-sort/blob/master/gifs/divide-and-conquer.gif?raw=true" width="800"/>
 
 ## The Algorithm
 
+So, we’re getting closer to putting the **Merge Sort Algorithm** together,
+we just need to establish couple of things we’ll need and how we’re planning to do things around.
+
+- We need a `merge` function that merges and sorts the final array/slice
+- We need a recursive `sort` function
+- Call `sort` recursively for the **LEFT** & **RIGHT** sides
+- Call `merge` recursively for the sorted **LEFT** & **RIGHT** sides
+- **Return** the sorted slice back to the caller
+
 ## `merge` function
+
+Right of the bat, the merge function’s responsibility is to **merge 2** given arrays/slices **into 1**,
+as well as **sorting** the result in the merging process.
+
+So the merge function will have to create will primarily do these 3 things:
+
+1. Iterate as many times as the smallest length of the 2 arrays/slices, meaning if we pass a slice of *length 7*
+and a slice of *length 3*, the loop will iterate *3 times only*.
+This of course is for the highest efficiency while doing comparisons.
+
+2. On each iteration we compare the elements of LEFT & RIGHT sides and insert the smaller one
+in the resulting array/slice, till we run out of iterations.
+
+3. We insert all the missing elements, when we run out of iterations. Like the case when
+one side has the most smaller elements, the other side will have elements we have not
+inserted in the resulting array/slice.
+
+While the merge function does all the things we enumerated above,
+it does not do couple of things which We, the developers are responsible for
+before calling the merge function.
+
+There is 1 thing that the merge function expects the developer to take care of,
+in order for it to work correctly:
+
+`The RIGHT & LEFT arrays/slices MUST be Sorted`
+
+The merge function must be able to work with different array/slice lengths,
+however, because on every sort call we divide the array/slice in 2,
+it’s clear that the merge function will be called with *n* or *n+1* elements difference.
+
+Here’s a small overview of the merge function and how it should work
+when for example we call it with the following LEFT & RIGHT sides:
+
+`merge([]int{4,5,7}, []int{1,3,6})`
+
 
 <img alt="merge function image" src="https://github.com/algorithms-go/merge-sort/blob/master/gifs/merge-function.gif?raw=true" width="800"/>
 
@@ -116,6 +182,22 @@ For the Go implementation check out the [merge function](sort/merge.go#L11)
 
 
 ## `sort` function
+
+You may be asking yourself, how the hell do we sort things when all we do is merge 2 already sorted arrays/slices
+and call a function that uses merge recursively. Well that’s the beauty of the *Divide & Conquer* principle.
+
+By dividing the initial array/slice consisting of perhaps a huge amount of elements into smaller arrays/slices
+and repeating the process we reach the very bottom of the recursion,
+where by definition an array/slice consisting of 1 element are trivially considered already sorted,
+which means when we start merging we meet both conditions:
+
+1. We provide sorted LEFT & RIGHT side arrays/slices (beginning from arrays/slice of length 1).
+2. Repeat the process till we’ve merged everything back to the initial big array/slice,
+this time in the sorted order.
+
+Have a look at how exactly the sort function will get called for a simple example like the following:
+
+`sort([]int{6,2,1,3,5,4}) // [1, 2, 3, 4, 5, 6]`
 
 <img alt="sort function image" src="https://github.com/algorithms-go/merge-sort/blob/master/gifs/sort-function.gif?raw=true" width="800"/>
 
