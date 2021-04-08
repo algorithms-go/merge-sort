@@ -149,6 +149,50 @@ function sort(A) {
 }
 ```
 
+The sort function primarily consists of 3 steps:
+1. **Split** the incoming array/slice in **2 sides**, on every recursive call
+& create *LEFT* & *RIGHT* arrays/slices.
+
+```
+...
+n1 = A.length / 2
+n2 = A.length - n1
+let L[0..n1] and R[0..n2]
+    
+// split A in half => L and R arrays/slices
+for i=0 to n1 {
+  L[i] = A[i]
+}
+for j=0 to n2 {
+  R[j] = A[n1+j]
+}
+...
+```
+
+2. **Return** array/slice when it *cannot be divided anymore*, or it has **only 1 element**.
+
+```
+if A.length > 1 {
+  ...
+}
+// Here we have an array/slice of 1 element only
+return A
+```
+
+3. **Call sort and merge** for **LEFT** & **RIGHT** sides **recursively**, till exit condition
+is met (*array/slice has 1 element only or both sides were merged*).
+
+```
+...
+// recursively sort & merge L & R arrays/slices
+// A starts growing when recursion reaches the very bottom
+A = merge(sort(L), sort(R))
+...
+```
+
+For the Go implementation check out the [sort function](sort/merge.go#L51)
+and [insertionMergeSort function](sort/merge.go#L51)
+
 ### Facts
 
 As I say in everyone of my tutorials, there is really ***no perfect tool/solution*** or algorithm that does it all.
@@ -243,6 +287,7 @@ BenchmarkInsertionMergeSortFunc-16    	     915	   1293846 ns/op
 
 ### Resources
 
+- [Merge Sort Algorithm - Medium Article](https://steevehook.medium.com/merge-sorting-algorithm-in-go-f7d5b47e015b)
 - [Merge Sort - Geeks for Geeks](https://www.geeksforgeeks.org/merge-sort/)
 - [Merge Sort - Programiz](https://www.programiz.com/dsa/merge-sort)
 - [Big O Cheatsheet - Insertion vs Merge vs Quick sort](https://www.bigocheatsheet.com/)
