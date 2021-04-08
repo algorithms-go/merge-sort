@@ -1,5 +1,7 @@
 # Merge Sort Algorithm
 
+<img alt="from js to go image" src="https://github.com/algorithms-go/merge-sort/blob/master/thumbnail.jpg?raw=true" width="700"/>
+
 The merge sort algorithm may seem complicated to implement because it uses a recursive approach,
 which bugs a lot of people. The easiest way to reason about the merge sort algorithm is:
 Imagine you have a big pile of cards that you want to sort out.
@@ -92,3 +94,4 @@ BenchmarkInsertionMergeSortFunc-16    	     915	   1293846 ns/op
 - [Merge Sort - Wiki](https://en.wikipedia.org/wiki/Merge_sort)
 - [Insertion Merge Sort - Ford–Johnson algorithm - Wiki](https://en.wikipedia.org/wiki/Merge-insertion_sort)
 - [Big O Cheatsheet - Insertion vs Merge vs Quick sort](https://www.bigocheatsheet.com/)
+- [Divide & Conquer Principle](https://en.wikipedia.org/wiki/Divide-and-conquer_algorithm)
